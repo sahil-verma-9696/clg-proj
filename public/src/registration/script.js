@@ -1,5 +1,5 @@
-import dom from './domObject.js';
-import api from './../../modules/dataFetching.js';
+import dom from './modules/domObject.js';
+import api from './modules/dataFetching.js';
 
 dom.form.addEventListener("submit", async (event) => {
   event.preventDefault();
