@@ -1,5 +1,5 @@
-import dom from './modules/domObject.js';
-import api from './modules/dataFetching.js';
+import dom from './domObject.js';
+import api from './../../modules/dataFetching.js';
 
 dom.form.addEventListener("submit", async (event) => {
   event.preventDefault();
@@ -26,6 +26,8 @@ dom.form.addEventListener("submit", async (event) => {
   }
   } catch (error) {
     console.log(error);
+    dom.response.style.color = "red";
+    dom.response.innerHTML = "server is not responding"
   }
 })
 
