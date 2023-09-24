@@ -11,17 +11,18 @@ dom.form.addEventListener("submit", async (event) => {
 
   try {
     const response = await api.fetch("register", registerUser);
+    console.log(response)
 
-  if (!response) {
+  if (response.error) {
     dom.response.style.color = "red";
     dom.regError.style.color = "red";
-    dom.response.innerHTML = "Fail to register"
+    dom.response.innerHTML = response.error
     dom.form.style.backgroundColor = "red";
-    dom.regError.innerHTML = "server is not responding"
   } else {
     dom.response.style.color = "green";
-    dom.response.innerHTML = "Registration complete"
+    dom.response.innerHTML = response.msg
     dom.form.style.backgroundColor = "rgb(195, 255, 190)"
+    console.log(response)
   }
   } catch (error) {
     console.log(error);
