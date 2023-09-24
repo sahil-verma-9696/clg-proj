@@ -11,7 +11,9 @@ dom.form.addEventListener("submit", async (event) => {
 
   try {
     const response = await api.fetch("register", registerUser);
-    console.log(response)
+    if(response){
+      location.href = "http://localhost:3000/dashboard"
+    }
 
   if (response.error) {
     dom.response.style.color = "red";
@@ -29,13 +31,4 @@ dom.form.addEventListener("submit", async (event) => {
     dom.response.style.color = "red";
     dom.response.innerHTML = "server is not responding"
   }
-})
-
-
-
-
-
-
-
-
-
+}) 
