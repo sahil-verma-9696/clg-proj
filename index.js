@@ -9,7 +9,6 @@ const session = require("express-session"); // express-session for session manag
 
 // Import your custom routes module
 const route = require("./routes/route"); 
-const {sessionChecker} = require("./middleware/sessionChecker");
 
 // Define the port on which the server will run
 const PORT = 3000;
@@ -23,6 +22,18 @@ const server = http.createServer(app);
 // Connect to the database and specify the collection that is "miniproject"
 database("miniproject");
 
+// middleware function  
+const sessionChecker = (req,res,next)=>{
+  if(!req.session.user){
+    res.redirect("/login")
+    res.json({error:"user is not login"});
+  }else{
+    next()
+  }
+} 
+
+
+
 // Parse incoming JSON data from requests
 app.use(express.json());
 
@@ -35,23 +46,24 @@ app.use(session({
   secret: "randomtext",
   resave: false,
   saveUninitialized: false,
-  cookie: { expires: 60000 }
+  cookie: { expires: 600000 }
 })
 );
 
 // if i access home route i am render on /login route
-app.get("/", sessionChecker, (req, res) => {
+app.get("/", (req, res) => {
   res.redirect("/login");
 })
 
-// dashboard
-app.use("/dashboard",express.static(path.join(__dirname, 'public/src/dashboard')));
-
 // login
-app.use("/login", express.static(path.join(__dirname, "/public/src/login")));
+app.use("/login",(req,res,next)=>{req.session.user?res.redirect("/dashboard"):next()},express.static(path.join(__dirname, "/public/src/login")));
 
-// registration
-app.use("/registration", express.static(path.join(__dirname, "/public/src/registration")));
+// dashboard
+app.use("/dashboard",sessionChecker,express.static(path.join(__dirname, 'public/src/dashboard'))); 
+
+
+// categories
+app.use("/categories",express.static(path.join(__dirname,"public/src/category")))
 
 // api routes
 app.use("/api", route);
@@ -60,6 +72,8 @@ app.use("/api", route);
 app.use("*",(req,res)=>{
   res.redirect("/dashboard")
 })
+
+
 
 // Start the server and listen on the specified port
 server.listen(PORT, () => {
