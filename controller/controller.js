@@ -1,4 +1,5 @@
-const userModel = require("./../userModel/userMode"); // including user models from custom module
+const userModel = require("./../Model/userMode"); // including user models from custom module
+const Complaints = require("./../Model/complaint"); // including user models from custom module
 const bcrypt = require("bcrypt");
 
 const registration = async (req, res) => {
@@ -24,7 +25,7 @@ const registration = async (req, res) => {
             course: userData.course,
             branch: userData.branch,
             complaint: userData.complaint
-            
+
         });
 
         // Save the user to the database
@@ -60,15 +61,17 @@ const login = async (req, res) => {
         }
 
         if (!req.session.user) {
-            // Store only necessary user information in the session
+            // Store necessary user information in the session
             req.session.user = {
                 crn: authUser.crn,
                 name: authUser.name
             };
-            return res.json({ msg: "Welcome, your session has started" });
+            res.status(200).json({ msg: "login successful" })
         } else {
-            return res.status(400).json({ error: "Session already active" });
+            res.status(400).json({ error: "Session already active" });
         }
+
+
     } catch (error) {
         console.error(error);
         return res.status(500).json({ error: "Internal server error" });
@@ -77,11 +80,11 @@ const login = async (req, res) => {
 
 const logout = (req, res) => {
     try {
-      if(req.session.user){
-        res.clearCookie("AuthUser").json({ msg: "logout successfull" })
-      }else{
-        res.status(400).json({error:"no session exist"})
-      }
+        if (req.session.user) {
+            res.clearCookie("AuthUser").json({ msg: "logout successfull" })
+        } else {
+            res.status(400).json({ error: "no session exist" })
+        }
     } catch (error) {
         console.log(error)
     }
@@ -95,9 +98,24 @@ const session = (req, res) => {
     }
 }
 
+const complaintCollection = async (req, res) => {
+    try {
+        const data =await Complaints.find()
+        res.json(data)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+const student_details = async (req,res) =>{
+    res.json(await userModel.find())
+}
+
 module.exports = {
     registration,
     login,
     logout,
-    session
+    session,
+    complaintCollection,
+    student_details
 }

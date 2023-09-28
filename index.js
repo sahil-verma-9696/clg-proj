@@ -26,13 +26,13 @@ database("miniproject");
 const sessionChecker = (req,res,next)=>{
   if(!req.session.user){
     res.redirect("/login")
-    res.json({error:"user is not login"});
   }else{
     next()
   }
 } 
 
-
+//setting templete engine 
+app.set("view engine","ejs")
 
 // Parse incoming JSON data from requests
 app.use(express.json());
@@ -50,28 +50,28 @@ app.use(session({
 })
 );
 
+// 
+app.use("/public",express.static(path.join(__dirname, "public")));
+
+
 // if i access home route i am render on /login route
-app.get("/", (req, res) => {
-  res.redirect("/login");
-})
+// app.get("/", (req, res) => {
+//   res.redirect("/login");
+// })
 
 // login
-app.use("/login",(req,res,next)=>{req.session.user?res.redirect("/dashboard"):next()},express.static(path.join(__dirname, "/public/src/login")));
-
-// dashboard
-app.use("/dashboard",sessionChecker,express.static(path.join(__dirname, 'public/src/dashboard'))); 
-
-
-// categories
-app.use("/categories",express.static(path.join(__dirname,"public/src/category")))
+// app.use(express.static(path.join(__dirname, "/src/login")));
+app.use("/login",(req,res)=>{
+  res.render("login/login")
+});
 
 // api routes
 app.use("/api", route);
 
 // default route 
-app.use("*",(req,res)=>{
-  res.redirect("/dashboard")
-})
+// app.use("*",(req,res)=>{
+//   res.redirect("/dashboard")
+// })
 
 
 

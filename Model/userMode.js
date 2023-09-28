@@ -36,7 +36,7 @@ const registrationSchema = new mongoose.Schema({
     trim: true,
   },
   complaint: {
-    type: Number,
+    type: Object,
     trim: true,
   },
   password: {

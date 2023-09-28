@@ -10,10 +10,9 @@ dom.form.addEventListener("submit",async (event)=>{
     try {
         const response = await api.fetch("login",loginData);
         console.log(response)
-        if(response.msg){
-            location.href = "http://localhost:3000/dashboard"
+        if(response){
+            console.log("response get it")
         }
-        console.log(loginData)
     } catch (error) {  
         console.log(error)
     }
