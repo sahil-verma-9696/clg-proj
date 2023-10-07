@@ -1,0 +1,68 @@
+
+#header
+{
+    background-color: rgb(255, 0, 0);
+    color:black;
+    border: 2px solid rgb(0, 0, 0);
+    text-align: center;
+    box-shadow: 10px 10px 200px black;
+    -webkit-text-stroke: 1px rgb(0, 0, 0);
+    
+}
+span
+{
+    background-color: white;
+    border: 5px solid rgb(0, 0, 0);
+    box-shadow: 5px 5px 5px black;
+}
+textarea
+{
+    width: 200px;
+    height: 150px;
+    resize:none;
+}
+#reset{
+    color: white;
+    background-color: rgb(255, 16, 16);
+    width: 248px;
+    border:2px solid black;
+    box-shadow: 5px 5px 5px black;
+    text-shadow: 1px 1px 1px white;
+}
+#submit
+{
+    color: white;
+    background-color: rgb(27, 199, 27);
+    width: 235px;
+    border:2px solid black;
+    box-shadow: 5px 5px 5px black;
+}
+#select
+{
+    width: "148px";
+}
+#box
+{
+    margin-top: 50px;
+    border: 2px solid rgb(0, 0, 0); 
+    box-shadow: 5px 5px 5px black;
+    width: 580px;
+    height: 600px; 
+}
+form
+{
+margin-top: 29px;
+margin-left: 29px;
+margin-right: 29px;
+}
+hr
+{
+    opacity: 50%;
+}
+body
+{
+    background-image: url("/Assets/ComplaintArea/img-1.jpg");
+    background-repeat: no-repeat;
+    width: 100vw;
+    background-size: cover;
+}

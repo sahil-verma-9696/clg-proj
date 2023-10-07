@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COMPLAINT REGARDING FACULTY</title>
+    <link rel="stylesheet" href="/public/Style_sheets/ComplaintsForm/comp-faculty.css">
+</head>
+
+<body>
+    <div id="header">
+        <marquee direction="right">
+            <h1><span id="span">COMPLAINT REGARDING FACULTY</span></h1>
+        </marquee>
+    </div>
+    <div id="root">
+        <center>
+            <div id="box">
+                <form action="http://localhost:3000/api/complaint" method="post">
+                    <div>
+                        NAME : <input type="text" name="name" width="200px" class="name" required>
+                        MOBILE NO : <input type="number" name="contact" required maxlength="10" minlength="10">
+                    </div>
+                    <hr>
+                    <br>
+                    <div>
+                        COURSE:<select name="course" id="course" style="width: 148px;" required>
+                            <option value="b.tech" id="COURSE">B.TECH</option>
+                            <option value="DIPLOMA" id="COURSE">DIPLOMA</option>
+                            <option value="BBA" id="COURSE">BBA</option>
+                            <option value="MBA" id="COURSE">MBA</option>
+                            <option value="BCA" id="COURSE">BCA</option>
+                        </select>
+                        YEAR:<input type="number" name="year" id="year" min="1" max="4" style="width: 210px;" required>
+                    </div>
+                    <BR>
+                    <hr>
+                    <div>
+                        FACULTY NAME:
+                        <BR>
+                        <input type="text" name="faculty" id="FACULTY NAME" style="width: 484px;" required>
+                    </div>
+                    <hr>
+                    <div>
+                        SUBJECT
+                        <br>
+                        <input type="text" name="sub" id="sub" style="width: 484px;">
+                    </div>
+                    <br>
+                    <hr>
+                    <div>
+                        COMPLAINT:
+                        <br>
+                        <textarea name="complaintMsg" id="COMPLAINT" cols="50" rows="50" style="width: 484px;" placeholder="TO THE DEAN:" required></textarea>
+                    </div>
+                    <br>
+                    UPLOAD PROOF IF ANY:<input type="file" name="proof" id="proof"/>
+                    <br>
+                    <hr>
+                    DATE OF COMPLAINT:<input type="date" name="date" id="date" required>
+                    <hr>
+                    <hr>
+                    <div>
+                        <BUtton type="submit" name="submit" id="submit"><B>SUBMIT</B></BUtton>
+                        <button type="reset" name="reset" id="reset">RESET</button>
+                    </div>
+                    <hr>
+                </form>
+            </div>
+        </center>
+        <br><br>
+    </div>
+</body>
+<script type="module" src="/public/Scripts/Comp_faculty/script.mjs"></script>
+</html>

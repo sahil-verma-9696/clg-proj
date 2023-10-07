@@ -1,19 +1,3 @@
-import dom from './modules/domObject.js';
-import api from './modules/dataFetching.js';
-
-dom.form.addEventListener("submit",async (event)=>{
-    event.preventDefault();
-    const loginData =  {
-        crn : dom.userName.value,
-        password : dom.newPassword.value
-    }
-    try {
-        const response = await api.fetch("login",loginData);
-        console.log(response)
-        if(response){
-            console.log("response get it")
-        }
-    } catch (error) {  
-        console.log(error)
-    }
+window.addEventListener("blur",()=>{
+    location.reload();
 });
