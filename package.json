@@ -8,7 +8,7 @@
     "start": "node index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Sahil verma",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",
@@ -19,7 +19,6 @@
     "ejs": "^3.1.9",
     "express": "^4.18.2",
     "express-session": "^1.17.3",
-    "mongoose": "^7.6.0",
     "morgan": "^1.10.0",
     "nodemailer": "^6.9.5"
   }
