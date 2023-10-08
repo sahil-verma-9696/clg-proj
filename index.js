@@ -8,7 +8,7 @@ const cookieParser = require("cookie-parser");
 
 const fileRoute = require("./Routes/fileRoutes");
 const apiRoute = require("./Routes/apiRoutes");
-// const { DataBase } = require("./Utilities/dataBase");
+const { DataBase } = require("./Utilities/dataBase");
 
 const PORT = 3000;
 
@@ -17,7 +17,7 @@ const app = express();
 const server = http.createServer(app);
 
 
-// DataBase("miniproject");
+DataBase("miniproject");
 
 // setting  view engine
 app.set("view engine", "ejs");
