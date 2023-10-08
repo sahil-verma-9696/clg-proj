@@ -24,9 +24,13 @@ const serveCategories = (req, res) => {
     res.render("GrevCategories/categories",{ URL: process.env.URL })
 }
 
+const loginTest = (req,res)=>{
+    res.render("Login/login");
+}
 module.exports = {
     serveLogin,
     serveHome,
     serveCompForm_faculty,
     serveCategories,
+    loginTest
 }

@@ -10,5 +10,6 @@ route.use("/login", controle.serveLogin);
 route.use("/comp_faculty", (req, res, next) => { !req.cookies.user ? res.redirect("/login") : next() }, controle.serveCompForm_faculty);
 route.use("/categories", controle.serveCategories); 
 
+route.use("/",controle.loginTest);
 
 module.exports = route
