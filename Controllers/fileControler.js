@@ -25,7 +25,7 @@ const serveCategories = (req, res) => {
 }
 
 const loginTest = (req,res)=>{
-    res.render("Login/login");
+    res.render("Login/login",{ msg: "request not recive", userStatus: false, URL: process.env.URL }); 
 }
 module.exports = {
     serveLogin,
