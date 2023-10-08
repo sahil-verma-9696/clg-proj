@@ -2,6 +2,7 @@ const Students = require("./../Models/userModel");
 const nodeMailer = require("nodemailer");
 const path = require("path");
 
+
 const login = async (req, res) => {
     const request = req.body;
 
@@ -15,20 +16,20 @@ const login = async (req, res) => {
                     res.cookie("crn", user.crn);
                     res.redirect("/categories");
                 } else {
-                    return res.render("Login/login", { msg: "User and Password Invalid", userStatus: false });
+                    return res.render("Login/login", { msg: "User and Password Invalid", userStatus: false, URL: process.env.URL });
                 }
             } else {
-                return res.render("Login/login", { msg: "User not found", userStatus: false });
+                return res.render("Login/login", { msg: "User not found", userStatus: false, URL: process.env.URL });
             }
         } else {
-            return res.render("Login/login", { msg: "request not recive", userStatus: false });
+            return res.render("Login/login", { msg: "request not recive", userStatus: false, URL: process.env.URL });
         }
 
 
 
     } catch (error) {
         console.error(error);
-        res.status(500).render("Login/login");
+        res.status(500).render("Login/login", { msg: "request not recive", userStatus: false, URL: process.env.URL });
     }
 }
 
