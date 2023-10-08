@@ -13,4 +13,4 @@ const DataBase = (collection) => {
     }
 }
 
-module.exports = { DataBase }
+module.exports = { DataBase } 

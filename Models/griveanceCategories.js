@@ -1,8 +1,8 @@
-// const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
-// const griveanceCategories = mongoose.Schema({});
+const griveanceCategories = mongoose.Schema({});
 
-// const students = mongoose.model("students", griveanceCategories);
-// const categories = mongoose.model("complaints_categs", griveanceCategories);
+const students = mongoose.model("students", griveanceCategories);
+const categories = mongoose.model("complaints_categs", griveanceCategories);
 
-// module.exports = { students, categories };   
+module.exports = { students, categories };   
